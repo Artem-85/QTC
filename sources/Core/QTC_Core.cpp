@@ -121,9 +121,8 @@ QMap<QString,QLocale> QTC_Core::applicationTranslations()
 QString QTC_Core::getDefaultUserName()
 {
     QString userName;
-//   TODO:
-//   add definition of platform flag via including .pri
-    #ifdef WNT
+
+    #ifdef PLATFORM_WIN
         userName = qgetenv("USERNAME");
     #else
         userName = qgetenv("USER");

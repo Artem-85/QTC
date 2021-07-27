@@ -1,11 +1,15 @@
 #ifndef QTC_CORE_H
 #define QTC_CORE_H
 
+#include <QTC_Configuration.h>
 #include <QApplication>
 #include <QDir>
 #include <QSettings>
 #include <QMessageBox>
-#include <QTC_Configuration.h>
+
+#ifdef BUILD_DEBUG
+    #include <QDebug>
+#endif
 
 class QTC_Core: public QApplication
 {
