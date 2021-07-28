@@ -118,6 +118,14 @@ QMap<QString,QLocale> QTC_Core::applicationTranslations()
 
 }
 
+QWidget* QTC_Core::getMainWinInstance()
+{
+    if (topLevelWidgets()[0])
+        return topLevelWidgets()[0];
+    else
+        return nullptr;
+}
+
 QString QTC_Core::getDefaultUserName()
 {
     QString userName;
@@ -151,3 +159,4 @@ QLocale QTC_Core::getSystemLocale()
     QLocale systemLocale = QLocale::system();
     return systemLocale;
 }
+

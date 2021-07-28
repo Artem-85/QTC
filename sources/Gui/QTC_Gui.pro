@@ -1,6 +1,6 @@
-!build_pass:message(Processing QTC_Core...)
+!build_pass:message(Processing QTC_Gui...)
 include(../../qmake_target_platform.pri)
-!build_pass:message(QTC_Core PWD: $${PWD})
+!build_pass:message(QTC_Gui PWD: $${PWD})
 
 DESTDIR = $${PWD}/../../bin/$${destination_path}
 OBJECTS_DIR = $${PWD}/../../build/$${destination_path}
@@ -15,7 +15,7 @@ CONFIG += c++17
 
 TEMPLATE = lib
 
-TARGET = QTC_Core
+TARGET = QTC_Gui
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -26,19 +26,8 @@ INCLUDEPATH += \
     ./
 
 SOURCES += \
-    QTC_Core.cpp
+    QTC_MainWindow.cpp
 
 HEADERS += \
     ../QTC_Configuration.h \
-    QTC_Core.h
-
-#TRANSLATIONS += \
-#    QTC_core_en_US.ts
-
-#CONFIG += lrelease
-#CONFIG += embed_translations
-
-## Default rules for deployment.
-#qnx: target.path = /tmp/$${TARGET}/bin
-#else: unix:!android: target.path = /opt/$${TARGET}/bin
-#!isEmpty(target.path): INSTALLS += target
+    QTC_MainWindow.h

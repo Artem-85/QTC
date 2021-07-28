@@ -42,10 +42,13 @@ linux {
 #    } else {
 #        QMAKE_TARGET.arch = x86_64
 #    }
-#    linux-g++ {
-#        CONFIG += COMPILER_GCC
+    linux-g++ {
+        CONFIG += COMPILER_GCC
+
+        compiler_path = gcc
+
 #        message(COMPILER_GCC)
-#    }
+    }
 
 } 
 #contains(QMAKE_TARGET.arch, x86_64) {

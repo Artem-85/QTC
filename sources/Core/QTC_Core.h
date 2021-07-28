@@ -3,6 +3,7 @@
 
 #include <QTC_Configuration.h>
 #include <QApplication>
+//#include <QTC_MainWindow>
 #include <QDir>
 #include <QSettings>
 #include <QMessageBox>
@@ -44,6 +45,8 @@ public:
     QLocale systemLocale();
 
     QMap<QString,QLocale> applicationTranslations();
+
+    QWidget* getMainWinInstance();
 
 private:
 
