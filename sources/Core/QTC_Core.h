@@ -3,7 +3,6 @@
 
 #include <QTC_Configuration.h>
 #include <QApplication>
-//#include <QTC_MainWindow>
 #include <QDir>
 #include <QSettings>
 #include <QMessageBox>
@@ -18,21 +17,27 @@ class QTC_Core: public QApplication
 
 public:
 
+    typedef QMap<QString,QVariant> SetMap;
+
+    typedef QMap<QString,QLocale> LocMap;
+
     explicit QTC_Core(int &argc, char **argv);
 
     ~QTC_Core();
 
     void init();
 
+    void firstRunCheck();
+
     void readSettings();
 
     void writeSettings();
 
-    void setApplicationUser(QString user);
+    void setApplicationUser(const QString& user);
 
-    void setApplicationPath(QString path);
+    void setApplicationPath(const QString& path);
 
-    void setApplicationLocale(QLocale locale);
+    void setApplicationLocale(const QLocale& locale);
 
     void switchAppTranslation(QLocale newLocale);
 
@@ -42,13 +47,17 @@ public:
 
     QLocale applicationLocale();
 
+    SetMap& applicationSettingsToUpdate();
+
     QLocale systemLocale();
 
-    QMap<QString,QLocale> applicationTranslations();
+    LocMap& applicationTranslations();
 
     QWidget* getMainWinInstance();
 
 private:
+
+    QSettings m_appSettings;
 
     QString m_appUser;
 
@@ -56,15 +65,21 @@ private:
 
     QLocale m_appLocale;
 
+    SetMap m_settingsToUpdate;
+
     QLocale m_sysLocale;
 
-    QMap<QString,QLocale> m_appTranslations;
+    LocMap m_appTranslations;
 
     QString getDefaultUserName();
 
     QString getDefaultPath();
 
     QLocale getSystemLocale();
+
+private slots:
+
+    void onQuit();
 
 };
 
